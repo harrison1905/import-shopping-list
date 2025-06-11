@@ -16,35 +16,11 @@ Mit diesem Repository kannst du:
 * **Erinnerungsliste anlegen**: Falls noch nicht vorhanden, wird eine Erinnerungs-Liste namens **„Einkäufe“** erstellt.
 * **Nahtlose Integration**: Einfach aus Cookidoo in der Teilen-Ansicht auswählen.
 
-## 📂 Repository-Struktur
-
-```
-recipe-import/
-├── README.md
-├── scriptable/
-│   └── einkaufsliste.js
-└── LICENSE
-```
 
 ## 🛠️ Installation
       https://scriptable.app/
-1. **Klonen** des Repos:
-
-   ```bash
-   git clone https://github.com/DEIN_USERNAME/recipe-import.git
-   cd recipe-import
-   ```
-2. **Scriptable-Skript** in das Scriptable-Verzeichnis importieren:
-
-   * Öffne Scriptable auf deinem iPhone/iPad.
-   * Tippe auf „+“ und wähle **Import File**.
-   * Navigiere zum Ordner `scriptable/` und wähle `einkaufsliste.js`.
-
-## 📖 Anwendung
-
-1. Öffne in **Cookidoo** das Rezept und tippe auf **Teilen**.
-2. Wähle **Scriptable** → **Einkaufsliste → Erinnerungen**.
-3. Scriptable legt in der Liste „Einkäufe“ deine Artikel als individuelle Erinnerungen an.
+      
+      importiere Cookidoo.scriptable 
 
 ## 📜 Scriptable-Skript
 
