@@ -1,0 +1,12 @@
+{
+  "always_run_in_app" : false,
+  "icon" : {
+    "color" : "deep-green",
+    "glyph" : "cart-arrow-down"
+  },
+  "name" : "Cookidoo",
+  "script" : "\/\/ Variables used by Scriptable.\n\/\/ icon-color: blue; icon-glyph: list;\n\n\/\/ 1. Text einlesen (aus Share Sheet oder Clipboard)\nlet text = \"\";\nif (args.plainTexts && args.plainTexts.length > 0) {\n  text = args.plainTexts.join(\"\\n\");\n} else {\n  text = Pasteboard.general.string;\n}\nif (!text) {\n  console.error(\"Kein Text gefunden.\");\n  return;\n}\n\n\/\/ 2. Zeilen splitten und filtern (nur Zeilen, die mit Zahl beginnen)\nlet lines = text.split(\/\\r?\\n\/);\nlet items = lines\n  .map(l => l.trim())\n  .filter(l => \/^\\d\/.test(l)); \/\/ Zeile beginnt mit Ziffer\n\nif (items.length === 0) {\n  console.log(\"Keine passenden Einkaufs­punkte gefunden.\");\n  return;\n}\n\n\/\/ 3. Erinnerungs­liste finden oder anlegen\nlet listTitle = \"Einkäufe\";\nlet list = await Calendar.findOrCreateForReminders(listTitle); \n\/\/ → findet oder erstellt die Liste „Einkäufe“ automatisch  [oai_citation:0‡docs.scriptable.app](https:\/\/docs.scriptable.app\/calendar\/?utm_source=chatgpt.com)\n\n\/\/ 4. Für jeden Punkt eine neue Erinnerung anlegen\nfor (let item of items) {\n  let reminder = new Reminder();                   \/\/ neuer Reminder  [oai_citation:1‡docs.scriptable.app](https:\/\/docs.scriptable.app\/reminder\/)\n  reminder.title = item;                           \/\/ Titel setzen\n  reminder.calendar = list;                        \/\/ Ziel­liste auswählen\n  reminder.save();                                 \/\/ speichern\n}\n\n\/\/ Optional: Script beenden und kurz Feedback geben\nScript.complete();",
+  "share_sheet_inputs" : [
+    "plain-text"
+  ]
+}
